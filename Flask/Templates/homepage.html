@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Political Discourse on Reddit</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body style="background:#FF8C00;">
+    <div class="wrapper" style="background:#FF8C00;">
+      <nav class="navbar navbar-default" style="background:#FF8C00;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" style="color:#B40808;" href="/">PolReddict
+              <img class="nav-ufo" src="static/images/logo.png">
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div class="hero text-center">
+        <h1 style="color:#B40808;">PolReddict</h1>
+        <p style="color:#810D0D;">Monitoring Political Discourse on Reddit</p>
+      </div>
+      <div class="container">
+        <div class="row margin-top-50">
+          <div class="col-md-2">
+            <aside class="filters" style="background:#FF8C00;">
+              <div class="panel panel-default" style="background:#FF8C00;">
+                <div class="panel-heading" style="background: #FF3600;">Navigation</div>
+                <div class="panel-body">
+                        <div class="jumbotron" style="background: #FF3600;">
+                            <a href="/jsondata" class="btn btn-primary" role="button">Posts</a>
+
+                            <br>
+                            <br>
+                            <a href="/wordcloud" class="btn btn-primary" role="button">Name Entity</a>
+                            <br>
+                            <br>
+                            <a href="/title_topic" class="btn btn-primary" role="button">Topics</a>
+                            <br>
+                            <br>
+                            <a href="/dropdown" class="btn btn-primary" role="button">Feedback</a>
+                  </div>
+            </aside>
+          </div>
+          <div class="col-md-10">
+            <div id="plot">
+              <h1>About PolReddit</h1>
+              <br>
+              <h4>Introduction</h4>
+              <p>There are a bunch of tools developed for analyzing news articles (<a href="https://mediacloud.org/">Media Cloud</a>) and mainstream social media platforms like Facebook and Twitter in the communication field. However, as Reddit has become an emerging platform that is substantially important in the political discussion and financial industry, analytical tools designed for Reddit remains deficient. This project aiming at developing a data management system that can illustrate the top hit posts on Reddit and monitor the popular discussion in different subReddits.</p><br>
+              <h4>Datasets</h4>
+              <p>There would be three datasets for storing three types of data in this project.</p>
+              <ol>
+              <li>The first Popular Post Table would contain primary information of popular posts, including ID, Ups, Downs, Kind, Score, Subreddit, Title, Comments, URL, etc. <strong>MySQL</strong> will be used for storing the Popular Post Table because it is a flexible and one of the most commonly used databases that meets the minimal requirement of storing textual data.</li>
+              <li>The second dataset will collect preview images of each post. <strong>PostgreSQL</strong> will be used for storing image data because it is powerful in searching, organizing and processing images.</li>
+              <li>I will first use Python to apply Name Entity Recognition to all post titles collected and detect place entities from these titles. Then, I will prepare my third dataset to collect spatial information in all Reddit titles. <strong>PostGIS</strong> would be used for storing the spatial information because it is a spatial extender for PostgreSQL, which can maintain the object-relational database with my second dataset as well as process the spatial data from Reddit posts.</li>
+              </ol>
+              <br>
+              <h4>Approaches</h4>
+              <ol>
+                <li>This project will first use Reddit Api to collect three types of data as mentioned above based on the subReddit indicated by users (for instance, it could be r/Liberal subReddit). If Reddit Api has a relatively low maximum limit for data collection, PRAW (Python Reddit Api Wrapper) will be used instead.</li>
+                <li>Use an NLP method to detect the spatial information from my data collection.</li>
+                <li>Store and organize three different types of data in three datasets separately, and use MySQL, PostgreSQL and PostGIS to manage them respectively.</li>
+                <li>Prepare my dataset and initial a Data Science Challenge</li>
+                <li>Query my data from different databases in Python and use Python to perform a variety of analytics to different types of data (eg. applying sentiment analysis to Reddit post titles).</li>
+                <li>Use Spark to process data in parallel.</li>
+                <li>Design a search-based UI that allow users to monitor the trend in each subReddit discussion through searching and filtering. The result will illustrate a sample of popular Reddit posts, trending preview images, and top mentioned places (highlighting cities and counties in US and world maps) in a particular subReddit requested by users.</li>
+                </ol>
+
+                <div class="col-md-10">
+                  <div id="plot">
+                      <a href="/jsondata"><h2 target="/jsondata" style="color: white;">subReddit Discussion</h2>
+                      <img class="NYTBestSeller" src="static/images/Subreddits.jpeg" alt="NYTBestSeller and Amazon Data" target="/book" height="300" width="500"></a>
+                      <a href="/wordcloud"><h2 href="/education" style="color: white;" >Visualizing Name Entities in subReddits</h2>
+                      <img src="static/images/wordcloud.jpeg" height="300" width="500"></a>
+                      <a href="/title_topic"><h2 style="color: white;">Topics of Reddit Post Titles</h2>
+                      <img src="static/images/feedback.jpg" height="300" width="500"></a>
+                </div>
+              </div>
+            
+            </div>
+            </aside>
+          </div>
+
+      </div>
+      <footer class="footer" style="background:#FF8C00;">
+        <span class="bottom" style="background:#E9967A;">EDUCATION</span>
+      </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+
+  </body>
+
+</html>

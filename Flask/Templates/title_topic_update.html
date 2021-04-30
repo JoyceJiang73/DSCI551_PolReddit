@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Education Data Visualization</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body style="background:#FF8C00;">
+  <div class="wrapper" style="background:#FF8C00;">
+    <nav class="navbar navbar-default" style="background:#FF8C00;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" style="color:#B40808;" href="/">PolReddict
+            <img class="nav-ufo" src="static/images/logo.png">
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="hero text-center">
+      <h1 style="color:#B40808;">PolReddict</h1>
+      <p style="color:#810D0D;">Monitoring Political Discourse on Reddit</p>
+    </div>
+      <div class="container">
+        <div class="row margin-top-50">
+          <div class="col-md-2" >
+            <aside class="filters" style="background:#FF8C00;">
+              <div class="panel panel-default" style="background:#FF8C00;">
+                <div class="panel-heading" style="background: #FF3600;">WordCloud</div>
+                <div class="panel-body">
+                  <form >
+                    <div class="form-group" >
+                        <div class="jumbotron" style="background: #FF3600;">
+                            <a href="/" class="btn btn-primary" role="button" style="background: #800000;">Homepage</a>
+
+                    </div>
+                  </form>
+                  <form name="passdata" action="" method ="post" >
+                    <div class="form-group" >
+                      <ul class="list-group" id="filters" >
+                        <li class="filter list-group-item" style="background: #FF3600;">
+                          <label for="userSubreddit">Enter a subReddit</label>
+                          <input name="subreddit" class="form-control" id="passwordInput" type="text" placeholder="World Politics">
+                          <button id="filter-btn-date" type="submit" value="submit" class="btn btn-default" style="background: #800000;">Update</button>
+                        </li>
+
+
+                </div>
+              </div>
+            </aside>
+          </div>
+          <div class="col-md-10">
+            <div id="plot">
+              <h1>Topic Classification for Reddit Posts</h1>
+              <br>
+              <h4>Political subReddit Selection</h4>
+              <p>Business, World News, Energy, World Events, World News 2, News, History, Economics, Politics PDF's, Environment, IWW, Government, Law, Wikileaks, News Porn, Education, World Politics, SOPA</p>
+              <br>
+              <h4>Data Source</h4>
+              <p>Reddit data was gathered from its API through the Python Reddit API Wrapper (PRAW) with a timeframe from Feb 7, 2021 to April 25, 2021</p>
+              <p>The API documentation can be accessed from: https://praw.readthedocs.io/en/latest/</p>
+              <br>
+              <h4>Name Entity Recognition</h4>
+              <p>Using Spacy from Python, I applied the Name Entity Recognition, a natural language processing technique, to all post titles collected from Reddit and filtered three major name entity categories (person, organization and location) from these titles. </p> 
+              <p>The Spacy Documentation can be accessed from: https://spacy.io/models</p>
+              <br>
+                <div >
+                  <h4>Topic 1 of subreddit</h4>
+                  <p>{{topic1_1}}</p>
+                  <p>{{topic1_2}}</p>
+                  <p>{{topic1_3}}</p>
+                  <p>{{topic1_4}}</p>
+                  <p>{{topic1_5}}</p>
+                  <br>
+                  <h4>Topic 2 of subreddit</h4>
+                  <p>{{topic2_1}}</p>
+                  <p>{{topic2_2}}</p>
+                  <p>{{topic2_3}}</p>
+                  <p>{{topic2_4}}</p>
+                  <p>{{topic2_5}}</p>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer" style="background:#FF8C00;">
+        <span class="bottom" style="background:#E9967A;">EDUCATION</span>
+      </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+    <script src="static/js/data.js"></script>
+    <script src="static/js/plotly.js"></script>
+  </body>
+
+</html>
